@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+$itemD: 50px;
+$itemFontSize: 20pt;
+$spacingFromBorder: 25px;
+$width: 100vw;
+$borderColor: black;
+.c-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle {
+  border-radius: 50%;
+  background: #777;
+  border: 1px solid $borderColor;
+  &-layer {
+    width: $width;
+    height: $width;
+    position: absolute;
+    @extend .c-c;
+    transform: rotate(var(--degs));
+  }
+  &-container {
+    @extend .circle;
+    width: $width;
+    height: $width;
+    position: relative;
+  }
+  &-item {
+    @extend .circle;
+    @extend .c-c;
+    font-size: $itemFontSize;
+    width: $itemD;
+    height: $itemD;
+    margin-right: calc(#{$width} - #{$itemD + $spacingFromBorder});
+    rotate: calc(0deg - var(--degs));
+    & .b-g {
+      border-color: gray;
+    }
+  }
+  &-center {
+    @extend .circle;
+    @extend .c-c;
+    font-size: $itemFontSize * 1.1;
+    width: 80px;
+    height: 80px;
+    background-color: #333;
+    color: white;
+  }
+  &-division {
+    width: $width / 2;
+    margin-right: $width / 2;
+    height: 1px;
+    background-color: $borderColor;
+    transform: rotate(--degs);
+  }
+}
